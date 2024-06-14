@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: toxic
+spec:
+  selector:
+    matchLabels:
+      app: toxic
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: toxic
+    spec:
+      containers:
+      - name: toxic
+        image: aafsnekjvn/toxic:latest
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: registrykey
